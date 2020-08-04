@@ -1,0 +1,464 @@
+{
+	"info": {
+		"_postman_id": "12353259-6d13-4c8c-82fa-b76e639bc509",
+		"name": "JRG_Ricoh",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth server",
+			"item": [
+				{
+					"name": "Auth Server - token request - ADMIN",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "USER_CLIENT_APP",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "grant_type",
+								"value": "password",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "username",
+								"value": "admin",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "admin",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic WNFUI9DTEIFTIRfQVBQOnBhc3N3b3jk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:{{auth_port}}/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{auth_port}}",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Server - token request - USER",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "USER_CLIENT_APP",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "grant_type",
+								"value": "password",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "username",
+								"value": "admin",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "admin",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic WNFUI9DTEIFTIRfQVBQOnBhc3N3b3jk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:{{auth_port}}/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{auth_port}}",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Resource server",
+			"item": [
+				{
+					"name": "Resource Server - Pedido - delete (ADMIN privileges)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiVVNFUl9DTElFTlRfUkVTT1VSQ0UiLCJVU0VSX0FETUlOX1JFU09VUkNFIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicm9sZV9hZG1pbiJdLCJleHAiOjE1OTY1NjMyNTcsImF1dGhvcml0aWVzIjpbInJvbGVfYWRtaW4iLCJjYW5fdXBkYXRlX3VzZXIiLCJjYW5fcmVhZF91c2VyIiwiY2FuX2NyZWF0ZV91c2VyIiwiY2FuX2RlbGV0ZV91c2VyIl0sImp0aSI6ImUxYjBkOWFiLTM1NWEtNGEzMy1iMTJjLWUwYWJjMGZlZmI1NCIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiY2xpZW50X2lkIjoiVVNFUl9DTElFTlRfQVBQIn0.Vitc17GToADym9_A3i-MU64kpPVcMH557JE2TGmGoJL8P7ngYANrlDcM_nekwjPWx-mRlsO-CI30ow6GCu8a-abNxMg_N5Fnp1j03nLwJbPpOCOqKmUR5Gx3ck7jNHD0EVyZMbrPnTzdQUXMoJzcMP2x5A_0IKBZjfET_QssG6ihSUjZd2pdSdf7eFlv-g0fwoBCQA6bmigyShykrROz9EcbgA0terVVa6sBnFYGXmlRj9ADIMJmdt9fvSMpXkWcAjfrVwOc4q3N1IeHHqyKmmSddFDwuxpFfWb_NOLfa-fCV2vQZMl6YTwbt_BNcLymNzL3siMGLbjugrq5WTnl1g",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{pedido_port}}/api/pedido/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{pedido_port}}",
+							"path": [
+								"api",
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resource Server - Pedido - create (ADMIN privileges)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiVVNFUl9DTElFTlRfUkVTT1VSQ0UiLCJVU0VSX0FETUlOX1JFU09VUkNFIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicm9sZV9hZG1pbiJdLCJleHAiOjE1OTY1NjMyNTcsImF1dGhvcml0aWVzIjpbInJvbGVfYWRtaW4iLCJjYW5fdXBkYXRlX3VzZXIiLCJjYW5fcmVhZF91c2VyIiwiY2FuX2NyZWF0ZV91c2VyIiwiY2FuX2RlbGV0ZV91c2VyIl0sImp0aSI6ImUxYjBkOWFiLTM1NWEtNGEzMy1iMTJjLWUwYWJjMGZlZmI1NCIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiY2xpZW50X2lkIjoiVVNFUl9DTElFTlRfQVBQIn0.Vitc17GToADym9_A3i-MU64kpPVcMH557JE2TGmGoJL8P7ngYANrlDcM_nekwjPWx-mRlsO-CI30ow6GCu8a-abNxMg_N5Fnp1j03nLwJbPpOCOqKmUR5Gx3ck7jNHD0EVyZMbrPnTzdQUXMoJzcMP2x5A_0IKBZjfET_QssG6ihSUjZd2pdSdf7eFlv-g0fwoBCQA6bmigyShykrROz9EcbgA0terVVa6sBnFYGXmlRj9ADIMJmdt9fvSMpXkWcAjfrVwOc4q3N1IeHHqyKmmSddFDwuxpFfWb_NOLfa-fCV2vQZMl6YTwbt_BNcLymNzL3siMGLbjugrq5WTnl1g",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"cliente\": \"CREADO\",\r\n\t\"articulos\": [1, 6]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{pedido_port}}/api/pedido/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{pedido_port}}",
+							"path": [
+								"api",
+								"pedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resource Server - Pedido - get by id (USER/ADMIN privileges)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiVVNFUl9DTElFTlRfUkVTT1VSQ0UiLCJVU0VSX0FETUlOX1JFU09VUkNFIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicm9sZV9hZG1pbiJdLCJleHAiOjE1OTY1NjMyNTcsImF1dGhvcml0aWVzIjpbInJvbGVfYWRtaW4iLCJjYW5fdXBkYXRlX3VzZXIiLCJjYW5fcmVhZF91c2VyIiwiY2FuX2NyZWF0ZV91c2VyIiwiY2FuX2RlbGV0ZV91c2VyIl0sImp0aSI6ImUxYjBkOWFiLTM1NWEtNGEzMy1iMTJjLWUwYWJjMGZlZmI1NCIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiY2xpZW50X2lkIjoiVVNFUl9DTElFTlRfQVBQIn0.Vitc17GToADym9_A3i-MU64kpPVcMH557JE2TGmGoJL8P7ngYANrlDcM_nekwjPWx-mRlsO-CI30ow6GCu8a-abNxMg_N5Fnp1j03nLwJbPpOCOqKmUR5Gx3ck7jNHD0EVyZMbrPnTzdQUXMoJzcMP2x5A_0IKBZjfET_QssG6ihSUjZd2pdSdf7eFlv-g0fwoBCQA6bmigyShykrROz9EcbgA0terVVa6sBnFYGXmlRj9ADIMJmdt9fvSMpXkWcAjfrVwOc4q3N1IeHHqyKmmSddFDwuxpFfWb_NOLfa-fCV2vQZMl6YTwbt_BNcLymNzL3siMGLbjugrq5WTnl1g",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{pedido_port}}/api/pedido/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{pedido_port}}",
+							"path": [
+								"api",
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resource Server - Pedido - get all (USER/ADMIN privileges)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiVVNFUl9DTElFTlRfUkVTT1VSQ0UiLCJVU0VSX0FETUlOX1JFU09VUkNFIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicm9sZV9hZG1pbiJdLCJleHAiOjE1OTY1NjMyNTcsImF1dGhvcml0aWVzIjpbInJvbGVfYWRtaW4iLCJjYW5fdXBkYXRlX3VzZXIiLCJjYW5fcmVhZF91c2VyIiwiY2FuX2NyZWF0ZV91c2VyIiwiY2FuX2RlbGV0ZV91c2VyIl0sImp0aSI6ImUxYjBkOWFiLTM1NWEtNGEzMy1iMTJjLWUwYWJjMGZlZmI1NCIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiY2xpZW50X2lkIjoiVVNFUl9DTElFTlRfQVBQIn0.Vitc17GToADym9_A3i-MU64kpPVcMH557JE2TGmGoJL8P7ngYANrlDcM_nekwjPWx-mRlsO-CI30ow6GCu8a-abNxMg_N5Fnp1j03nLwJbPpOCOqKmUR5Gx3ck7jNHD0EVyZMbrPnTzdQUXMoJzcMP2x5A_0IKBZjfET_QssG6ihSUjZd2pdSdf7eFlv-g0fwoBCQA6bmigyShykrROz9EcbgA0terVVa6sBnFYGXmlRj9ADIMJmdt9fvSMpXkWcAjfrVwOc4q3N1IeHHqyKmmSddFDwuxpFfWb_NOLfa-fCV2vQZMl6YTwbt_BNcLymNzL3siMGLbjugrq5WTnl1g",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{pedido_port}}/api/pedido/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{pedido_port}}",
+							"path": [
+								"api",
+								"pedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resource Server - Articulo - get by id (USER/ADMIN privileges)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiVVNFUl9DTElFTlRfUkVTT1VSQ0UiLCJVU0VSX0FETUlOX1JFU09VUkNFIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicm9sZV9hZG1pbiJdLCJleHAiOjE1OTY1NjMyNTcsImF1dGhvcml0aWVzIjpbInJvbGVfYWRtaW4iLCJjYW5fdXBkYXRlX3VzZXIiLCJjYW5fcmVhZF91c2VyIiwiY2FuX2NyZWF0ZV91c2VyIiwiY2FuX2RlbGV0ZV91c2VyIl0sImp0aSI6ImUxYjBkOWFiLTM1NWEtNGEzMy1iMTJjLWUwYWJjMGZlZmI1NCIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiY2xpZW50X2lkIjoiVVNFUl9DTElFTlRfQVBQIn0.Vitc17GToADym9_A3i-MU64kpPVcMH557JE2TGmGoJL8P7ngYANrlDcM_nekwjPWx-mRlsO-CI30ow6GCu8a-abNxMg_N5Fnp1j03nLwJbPpOCOqKmUR5Gx3ck7jNHD0EVyZMbrPnTzdQUXMoJzcMP2x5A_0IKBZjfET_QssG6ihSUjZd2pdSdf7eFlv-g0fwoBCQA6bmigyShykrROz9EcbgA0terVVa6sBnFYGXmlRj9ADIMJmdt9fvSMpXkWcAjfrVwOc4q3N1IeHHqyKmmSddFDwuxpFfWb_NOLfa-fCV2vQZMl6YTwbt_BNcLymNzL3siMGLbjugrq5WTnl1g",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{articulo_port}}/api/articulo/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{articulo_port}}",
+							"path": [
+								"api",
+								"articulo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resource Server - Articulo - get all (USER/ADMIN privileges)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiVVNFUl9DTElFTlRfUkVTT1VSQ0UiLCJVU0VSX0FETUlOX1JFU09VUkNFIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicm9sZV9hZG1pbiJdLCJleHAiOjE1OTY1MzU3NjksImF1dGhvcml0aWVzIjpbInJvbGVfYWRtaW4iLCJjYW5fdXBkYXRlX3VzZXIiLCJjYW5fcmVhZF91c2VyIiwiY2FuX2NyZWF0ZV91c2VyIiwiY2FuX2RlbGV0ZV91c2VyIl0sImp0aSI6IjBkNTFjYmY0LWQ4YmYtNDYxNy1iMThiLWZhMWYwNjIzNGIzMiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiY2xpZW50X2lkIjoiVVNFUl9DTElFTlRfQVBQIn0.GwPUM1-BulCoa8lszs6-Wu82KPT9k_abYk-NNA0_aNGia1yW7EsPvJtwzRzvPZkkyJxxyR8l4d8GGjHl_Ws0HA25Med4Yv4D8vbSVU-Hzna_crrvseKNCAQxQI6-nTe057w48fhaVybyZxeIbwVST49SVBvHVZXr8DGUlTFPK2hnvu2L-0ah-y62jvASDlswELmSF4RMdDcXpJD_keVm4MFtU98v_jiDw8NieZeNsHFT5sfiJR-36ciCFRcksdGcNbHdQcWvh8WOvwpb4oCfgN-LJLVTIJl70b9wxwy9fnFzObsJdjEyr5QfqdOlJHRlW3vVQXop9gmBcM-32UnFvQ",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{articulo_port}}/api/articulo/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{articulo_port}}",
+							"path": [
+								"api",
+								"articulo",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resource Server - Pedido - update (ADMIN privileges)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiVVNFUl9DTElFTlRfUkVTT1VSQ0UiLCJVU0VSX0FETUlOX1JFU09VUkNFIl0sInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsicm9sZV9hZG1pbiJdLCJleHAiOjE1OTY1NjMyNTcsImF1dGhvcml0aWVzIjpbInJvbGVfYWRtaW4iLCJjYW5fdXBkYXRlX3VzZXIiLCJjYW5fcmVhZF91c2VyIiwiY2FuX2NyZWF0ZV91c2VyIiwiY2FuX2RlbGV0ZV91c2VyIl0sImp0aSI6ImUxYjBkOWFiLTM1NWEtNGEzMy1iMTJjLWUwYWJjMGZlZmI1NCIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiY2xpZW50X2lkIjoiVVNFUl9DTElFTlRfQVBQIn0.Vitc17GToADym9_A3i-MU64kpPVcMH557JE2TGmGoJL8P7ngYANrlDcM_nekwjPWx-mRlsO-CI30ow6GCu8a-abNxMg_N5Fnp1j03nLwJbPpOCOqKmUR5Gx3ck7jNHD0EVyZMbrPnTzdQUXMoJzcMP2x5A_0IKBZjfET_QssG6ihSUjZd2pdSdf7eFlv-g0fwoBCQA6bmigyShykrROz9EcbgA0terVVa6sBnFYGXmlRj9ADIMJmdt9fvSMpXkWcAjfrVwOc4q3N1IeHHqyKmmSddFDwuxpFfWb_NOLfa-fCV2vQZMl6YTwbt_BNcLymNzL3siMGLbjugrq5WTnl1g",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 1,\"cliente\": \"UPDATED2\",\"articulos\": [5, 9, 10]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{pedido_port}}/api/pedido/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{pedido_port}}",
+							"path": [
+								"api",
+								"pedido",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

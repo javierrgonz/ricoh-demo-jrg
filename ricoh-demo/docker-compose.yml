@@ -1,0 +1,48 @@
+version: '3'
+services:
+  ricoh-mysql:
+    container_name: ricoh
+    image: mysql:5.6
+    volumes:
+      - ./mysql-dump:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: ricoh
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3308:3306"
+    restart: always
+  ricoh-demo-auth-server:
+    image: ricoh-demo-auth-server-image
+    depends_on: 
+      - ricoh
+    build: 
+      context: ./ricoh-demo-auth-server
+      dockerfile: Dockerfile
+    volumes:
+      - /data/ricoh-demo-auth-server
+    ports:
+      - "8083:8081"
+  ricoh-demo-articulo-server:
+    image: ricoh-demo-articulo-server-image
+    depends_on: 
+      - ricoh
+    build: 
+      context: ./ricoh-demo-articulo-server
+      dockerfile: Dockerfile
+    volumes:
+      - /data/ricoh-demo-articulo-server
+    ports:
+      - "8084:8080"
+  ricoh-demo-resource-server:
+    image: ricoh-demo-pedido-server-image
+    depends_on: 
+      - ricoh
+      - ricoh-demo-articulo-server
+    build: 
+      context: ./ricoh-demo-pedido-server
+      dockerfile: Dockerfile
+    volumes:
+      - /data/ricoh-demo-pedido-server
+    ports:
+      - "8085:8082"
