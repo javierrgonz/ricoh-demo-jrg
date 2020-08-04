@@ -1,7 +1,7 @@
 version: '3'
 services:
   ricoh-mysql:
-    container_name: ricoh
+    container_name: ricoh-mysql
     image: mysql:5.6
     volumes:
       - ./mysql-dump:/docker-entrypoint-initdb.d
@@ -15,7 +15,7 @@ services:
   ricoh-demo-auth-server:
     image: ricoh-demo-auth-server-image
     depends_on: 
-      - ricoh
+      - ricoh-mysql
     build: 
       context: ./ricoh-demo-auth-server
       dockerfile: Dockerfile
@@ -26,7 +26,7 @@ services:
   ricoh-demo-articulo-server:
     image: ricoh-demo-articulo-server-image
     depends_on: 
-      - ricoh
+      - ricoh-mysql
     build: 
       context: ./ricoh-demo-articulo-server
       dockerfile: Dockerfile
@@ -37,8 +37,7 @@ services:
   ricoh-demo-resource-server:
     image: ricoh-demo-pedido-server-image
     depends_on: 
-      - ricoh
-      - ricoh-demo-articulo-server
+      - ricoh-mysql
     build: 
       context: ./ricoh-demo-pedido-server
       dockerfile: Dockerfile

@@ -1,161 +1,161 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect
-1596562209563,4064,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-1,text,false,,2225,0,10,20,0,0,4064
-1596562209621,4039,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-2,text,false,,2225,0,10,20,0,0,4039
-1596562209711,4004,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-3,text,false,,2225,0,10,20,0,0,4004
-1596562209829,4242,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-4,text,false,,2225,0,10,20,0,0,4242
-1596562209563,4509,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-1,text,false,,2225,0,10,20,0,0,4509
-1596562209712,4361,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-3,text,false,,2225,0,10,20,0,0,4361
-1596562209618,4454,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-2,text,false,,2225,0,10,20,0,0,4453
-1596562210067,4204,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-6,text,false,,2225,0,10,20,0,0,4204
-1596562210070,4201,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-6,text,false,,2225,0,10,20,0,0,4201
-1596562210412,4150,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-10,text,false,,2225,0,10,20,0,0,4150
-1596562209822,4747,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-4,text,false,,2225,0,10,20,0,0,4747
-1596562209959,4610,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-5,text,false,,2225,0,10,20,0,0,4610
-1596562210311,4259,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-9,text,false,,2225,0,10,20,0,0,4259
-1596562210111,4458,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-7,text,false,,2225,0,10,20,0,0,4458
-1596562209957,4612,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-5,text,false,,2225,0,10,20,0,0,4612
-1596562210209,4364,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-8,text,false,,2225,0,10,20,0,0,4364
-1596562210211,4362,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-8,text,false,,2225,0,10,20,0,0,4362
-1596562210309,4264,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-9,text,false,,2225,0,10,20,0,0,4264
-1596562210411,4162,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-10,text,false,,2225,0,10,20,0,0,4162
-1596562210118,4639,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-7,text,false,,2225,0,10,20,0,0,4639
-1596562213665,4393,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-1,text,false,"Test failed: code expected to equal /
+1596564443147,4034,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-2,text,false,,2225,0,10,20,0,0,4034
+1596564443105,4062,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-1,text,false,,2225,0,10,20,0,0,4062
+1596564443105,4063,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-1,text,false,,2225,0,10,20,0,0,4063
+1596564443150,4017,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-2,text,false,,2225,0,10,20,0,0,4017
+1596564443242,4005,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-3,text,false,,2225,0,10,20,0,0,4005
+1596564443249,4006,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-3,text,false,,2225,0,10,20,0,0,4006
+1596564443343,4005,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-4,text,false,,2225,0,10,20,0,0,4005
+1596564443358,4003,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-4,text,false,,2225,0,10,20,0,0,4003
+1596564443442,4002,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-5,text,false,,2225,0,10,20,0,0,4002
+1596564443458,4003,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-5,text,false,,2225,0,10,20,0,0,4003
+1596564443545,4003,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-6,text,false,,2225,0,10,20,0,0,4003
+1596564443558,4002,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-6,text,false,,2225,0,10,20,0,0,4002
+1596564443645,4003,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-7,text,false,,2225,0,10,20,0,0,4003
+1596564443658,4002,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-7,text,false,,2225,0,10,20,0,0,4002
+1596564443745,4003,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-8,text,false,,2225,0,10,20,0,0,4003
+1596564443758,4004,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-8,text,false,,2225,0,10,20,0,0,4004
+1596564443846,4004,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-9,text,false,,2225,0,10,20,0,0,4004
+1596564443858,4005,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-9,text,false,,2225,0,10,20,0,0,4005
+1596564443946,4005,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-10,text,false,,2225,0,10,20,0,0,4005
+1596564443958,4005,Auth Server - token request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-10,text,false,,2225,0,10,20,0,0,4005
+1596564447209,4004,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-1,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,10,20,0,0,4393
-1596562213665,4393,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-2,text,false,"Test failed: code expected to equal /
+/",2225,0,10,20,0,0,4004
+1596564447210,4003,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-2,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,10,20,0,0,4393
-1596562213716,4342,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-3,text,false,"Test failed: code expected to equal /
+/",2225,0,10,20,0,0,4003
+1596564447209,4004,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-2,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,10,20,0,0,4342
-1596562214072,4285,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-4,text,false,"Test failed: code expected to equal /
+/",2225,0,10,20,0,0,4004
+1596564447209,4004,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-1,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,8,17,0,0,4285
-1596562214074,4283,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-3,text,false,"Test failed: code expected to equal /
+/",2225,0,10,20,0,0,4004
+1596564447248,4003,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-3,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,8,17,0,0,4283
-1596562214272,4085,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-6,text,false,"Test failed: code expected to equal /
+/",2225,0,8,16,0,0,4003
+1596564447256,4002,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-3,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,9,17,0,0,4085
-1596562214073,4388,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-1,text,false,"Test failed: code expected to equal /
+/",2225,0,8,15,0,0,4002
+1596564447349,4004,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-4,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,8,14,0,0,4388
-1596562214273,4287,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-6,text,false,"Test failed: code expected to equal /
+/",2225,0,7,14,0,0,4004
+1596564447362,4003,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-4,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,6,13,0,0,4286
-1596562214075,4485,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-2,text,false,"Test failed: code expected to equal /
+/",2225,0,7,13,0,0,4003
+1596564447445,4002,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-5,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,7,13,0,0,4484
-1596562214573,4182,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-5,text,false,"Test failed: code expected to equal /
+/",2225,0,6,12,0,0,4002
+1596564447462,4005,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-5,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,7,12,0,0,4182
-1596562214575,4008,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-9,text,false,"Test failed: code expected to equal /
+/",2225,0,6,11,0,0,4005
+1596564447549,4005,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-6,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,7,12,0,0,4008
-1596562214570,4010,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-4,text,false,"Test failed: code expected to equal /
+/",2225,0,5,10,0,0,4005
+1596564447561,4002,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-6,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,7,12,0,0,4010
-1596562214572,4008,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-7,text,false,"Test failed: code expected to equal /
+/",2225,0,5,9,0,0,4002
+1596564447649,4002,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-7,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,7,12,0,0,4008
-1596562214574,4003,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-8,text,false,"Test failed: code expected to equal /
+/",2225,0,4,8,0,0,4002
+1596564447661,4004,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-7,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,5,12,0,0,4003
-1596562214572,4005,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-5,text,false,"Test failed: code expected to equal /
+/",2225,0,4,7,0,0,4004
+1596564447749,4004,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-8,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,5,12,0,0,4005
-1596562214574,4289,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-8,text,false,"Test failed: code expected to equal /
+/",2225,0,3,6,0,0,4004
+1596564447763,4002,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-8,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,2,5,0,0,4289
-1596562214563,4492,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-10,text,false,"Test failed: code expected to equal /
+/",2225,0,3,5,0,0,4002
+1596564447851,4006,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-9,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,3,4,0,0,4492
-1596562214572,4483,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-9,text,false,"Test failed: code expected to equal /
+/",2225,0,2,4,0,0,4006
+1596564447864,4003,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-9,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,3,4,0,0,4483
-1596562214577,4478,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-10,text,false,"Test failed: code expected to equal /
+/",2225,0,2,3,0,0,4003
+1596564447952,4006,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET todos los articulos 1-10,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,1,4,0,0,4478
-1596562214758,4498,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-7,text,false,"Test failed: code expected to equal /
+/",2225,0,1,2,0,0,4006
+1596564447965,4001,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Api - Articulo - GET articulo 1 2-10,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
 
 ****** comparison: [[[200                                              ]]]
 
-/",2225,0,1,1,0,0,4498
+/",2225,0,1,1,0,0,4001

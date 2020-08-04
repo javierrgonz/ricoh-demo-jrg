@@ -40,14 +40,18 @@ Con maven o gradle se deberá construir y generar automáticamente el proyecto
 ## Solución propuesta
 ### Descripción de la arquitectura
 
-El proyecto se ha diseñado como un proyecto multimodulo, agrupado en un parent y separando por una parte el servidor de autenticacion OAuth2 (ricoh-demo-auth-server) y por otro lado la API Rest de Articulos y Pedidos (ricoh-demo-resource-server). Comparten base de datos MySql bajo el esquema "ricoh" para alojar tanto los datos de articulos y pedidos como los de OAuth2.
+El proyecto se ha diseñado como dos proyectos separados, incluyendo:
+- Proyecto `ricoh-demo` donde se incluye el servidor de autenticación `ricoh-demo-auth-server` y dos resource server, uno para pedidos y otro para articulos (`ricoh-demo-articulo-server` y `ricoh-demo-pedido-server`).
+- Proyecto `ricoh-demo-model`, donde se incluye la capa de persistencia comun a los resource servers de articulo y pedidos
 
 ```
-ricoh-demo (pom)
- |
- |-- ricoh-demo-auth-server (jar)
- |
- |-- ricoh-demo-resource-server (jar)
+|-  ricoh-demo-model (jar)
+|
+|- ricoh-demo (pom)
+   |
+   |- ricoh-demo-auth-server (jar)
+   |- ricoh-demo-articulo-server (jar)
+   |- ricoh-demo-pedido-server (jar)
 ```
 
 ### Compilado e instalación
@@ -56,7 +60,7 @@ Mediante el plugin (Maven Wrapper) se ha configurado la posibilidad de ejecutar 
 `mvn -N io.takari:maven:0.7.7:wrapper`
 
 **Construcción y generación de ambos modulos**
-- `mvnw clean install`: clean install del proyecto multimodular a ejecutar desde la carpeta del proyecto padre. Compila de forma limpia los modulos del proyecto. Asimismo, ejecuta los test (integración y unitarios) de forma previa. Para evitar la ejecución de test incluir el parametro `-Dmaven.test.skip=true`
+- `mvnw clean install`: clean install del proyecto multimodular a ejecutar desde la carpeta del proyecto padre. Compila de forma limpia los modulos del proyecto. Asimismo, ejecuta los test (integración, unitarios y de rendimiento). Para evitar la ejecución de todos los test incluir el parametro `-Dmaven.test.skip=true -DskipTest=true`
 - `mvnw verify`: goal para ejecución de testing. Se incluyen los test unitarios así como test de integración, configurado a través del plugin **surefire**
 
 **Construcción y generación de modulos por separado**
