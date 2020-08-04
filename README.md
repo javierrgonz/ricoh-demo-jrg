@@ -112,7 +112,7 @@ Para la ejecución, ejecutar los archivos `.jar` creados en los directorios de c
 
 #### API Rest y seguridad
 
-El proyecto realizado consiste en dos servicios API Rest para el acceso a información de Articulos y Pedidos. Asimismo, se incluye un servidor independiente de autenticación OAuth2 con token JWT. Los endpoint expuestos se pueden consultar en la documentación SWAGGER incluida en el proyecto: `http://localhost:PORT/swagger-ui.html`. 
+El proyecto realizado consiste en dos servicios API Rest para el acceso a información de Articulos y Pedidos. Asimismo, se incluye un servidor independiente de autenticación OAuth2 con token JWT. Los endpoint expuestos se pueden consultar en la documentación SWAGGER incluida en el proyecto: `http://localhost:PORT/swagger-ui.html`. Para la gestión de la seguridad se utiliza un sistema de clave privada - clave publica,  incluyendo clave privada en el servidor AUTH y la clave privada en los servicios que lo consumen (ARTICULO y PEDIDO), dentro de su `application.yml`.
 
 Se adjuntan a continuación las llamadas CURL a los distintos endpoints de los proyectos. Cabe indicar que se requiere disponer de un token de autenticación, accesible a través del servidor AUTH, con una duración establecida de 900 segundos (15 min).
 
