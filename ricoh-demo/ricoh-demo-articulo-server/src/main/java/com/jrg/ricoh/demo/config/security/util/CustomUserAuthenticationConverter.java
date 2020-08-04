@@ -13,6 +13,11 @@ import org.springframework.util.StringUtils;
 
 import com.jrg.ricoh.demo.entity.CustomPrincipal;
 
+/**
+ * The CustomUserAuthenticationConverter
+ * @author Javier
+ *
+ */
 public class CustomUserAuthenticationConverter implements UserAuthenticationConverter  {
 
 	
@@ -20,11 +25,20 @@ public class CustomUserAuthenticationConverter implements UserAuthenticationConv
 
 	private Collection<? extends GrantedAuthority> defaultAuthorities;
 
+	/**
+	 * Sets default authorities
+	 * @param defaultAuthorities the default authorities to set
+	 */
 	public void setDefaultAuthorities(String[] defaultAuthorities) {
 		this.defaultAuthorities = AuthorityUtils
 				.commaSeparatedStringToAuthorityList(StringUtils.arrayToCommaDelimitedString(defaultAuthorities));
 	}
 	
+	/**
+	 * Convert user authentication
+	 * @param userAuthentication the user authentication
+	 * @return the response
+	 */
 	@Override
 	public Map<String, ?> convertUserAuthentication(Authentication userAuthentication) {
 		Map<String, Object> response = new LinkedHashMap<String, Object>();
@@ -36,6 +50,10 @@ public class CustomUserAuthenticationConverter implements UserAuthenticationConv
 		return response;
 	}
 
+	/**
+	 * Extract authentication
+	 * @param map the data
+	 */
 	@Override
 	public Authentication extractAuthentication(Map<String, ?> map) {
 		if (map.containsKey(USERNAME))
@@ -45,6 +63,11 @@ public class CustomUserAuthenticationConverter implements UserAuthenticationConv
 		return null;
 	}
 	
+	/**
+	 * Get the authorities
+	 * @param map the params
+	 * @return the authorities
+	 */
 	private Collection<? extends GrantedAuthority> getAuthorities(Map<String, ?> map) {
 		if (!map.containsKey(AUTHORITIES))
 			return defaultAuthorities;

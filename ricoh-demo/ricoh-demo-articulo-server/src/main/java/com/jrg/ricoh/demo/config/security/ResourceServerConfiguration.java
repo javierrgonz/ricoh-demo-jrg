@@ -11,6 +11,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
+/**
+ * The ResourceServerConfiguration
+ * @author Javier
+ *
+ */
 @Configuration
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -19,6 +24,10 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	@Autowired
 	public TokenStore tokenStore;
 
+	/**
+	 * Configure http security
+	 * @param http the httpsecurity
+	 */
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().permitAll().and().cors().disable().csrf().disable().httpBasic().disable()

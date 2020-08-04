@@ -22,18 +22,36 @@ import org.springframework.security.oauth2.provider.token.UserAuthenticationConv
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.stereotype.Component;
 
+/**
+ * The CustomAccessTokenConverter
+ * @author Javier
+ *
+ */
 @Component
 public class CustomAccessTokenConverter implements AccessTokenConverter, JwtAccessTokenConverterConfigurer {
 
+	
+	/* The includeGrantType	 */
 	private boolean includeGrantType;
 
+	/* The UserAuthenticationConverter  */
 	private UserAuthenticationConverter userTokenConverter = new CustomUserAuthenticationConverter();
 
+	/**
+	 * Configures the converter
+	 * @param converter the converter
+	 */
 	@Override
 	public void configure(JwtAccessTokenConverter converter) {
 		converter.setAccessTokenConverter(this);
 	}
 	
+	/**
+	 * Extracts the access token
+	 * @param value the value
+	 * @param map the map
+	 * @return the token
+	 */
 	public OAuth2AccessToken extractAccessToken(String value, Map<String, ?> map) {
 		DefaultOAuth2AccessToken token = new DefaultOAuth2AccessToken(value);
 		Map<String, Object> info = new HashMap<String, Object>(map);
@@ -55,6 +73,11 @@ public class CustomAccessTokenConverter implements AccessTokenConverter, JwtAcce
 	}
 	
 
+	/**
+	 * Extracts the scope
+	 * @param map
+	 * @return the scope
+	 */
 	private Set<String> extractScope(Map<String, ?> map) {
 		Set<String> scope = Collections.emptySet();
 		if (map.containsKey(SCOPE)) {
@@ -71,6 +94,11 @@ public class CustomAccessTokenConverter implements AccessTokenConverter, JwtAcce
 	}
 	
 
+	/**
+	 * Extracts authentication
+	 * @param map the map
+	 * @return the authentication
+	 */
 	@Override
 	public OAuth2Authentication extractAuthentication(Map<String, ?> map) {
 		Set<String> scope = extractScope(map);
@@ -101,6 +129,11 @@ public class CustomAccessTokenConverter implements AccessTokenConverter, JwtAcce
 	}
 	
 	
+	/**
+	 * Get the audience
+	 * @param map the map
+	 * @return the audience
+	 */
 	private Collection<String> getAudience(Map<String, ?> map) {
 		Object auds = map.get(AUD);
 
@@ -113,6 +146,12 @@ public class CustomAccessTokenConverter implements AccessTokenConverter, JwtAcce
 		return Collections.singleton((String) auds);
 	}
 	
+	/**
+	 * Convert access token
+	 * @param token the token
+	 * @param authentication the authentication
+	 * @return the response
+	 */
 	public Map<String, ?> convertAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
 		Map<String, Object> response = new HashMap<String, Object>();
 		OAuth2Request clientToken = authentication.getOAuth2Request();
@@ -141,14 +180,20 @@ public class CustomAccessTokenConverter implements AccessTokenConverter, JwtAcce
 	}
 	
 	
+	/**
+	 * Set the user token converter
+	 * @param userTokenConverter
+	 */
 	public void setUserTokenConverter(UserAuthenticationConverter userTokenConverter) {
 		this.userTokenConverter = userTokenConverter;
 	}
 
+	/**
+	 * Set the include grant type
+	 * @param includeGrantType
+	 */
 	public void setIncludeGrantType(boolean includeGrantType) {
 		this.includeGrantType = includeGrantType;
 	}
-	
-
 	
 }

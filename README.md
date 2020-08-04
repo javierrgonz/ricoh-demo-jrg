@@ -1,6 +1,8 @@
 # Ricoh Demo - Javier Rodriguez Gonzalez
+
 Demo para proceso de selección de Ricoh (Agosto 2020)
 
+- - - 
 ## Resumen
 
 Creación de una API REST. Con un servicio que listará pedidos, pudiendo acceder al detalle de un catalogo de cualquier articulo de un pedido
@@ -31,85 +33,159 @@ Entiendase que un Artículo pertenece a un Catálogo
     - service2
     - mysql
 
-Documentación asociada a los ejercicios realizados. ¿Cómo se ha realizado?¿Que has usado y por qué?
-Ejemplo petición $ curl -X POST /api/pedido
-Ejemplo petición $ curl -X GET /api/pedido/{id}
-Especificar la gestión de seguridad para realizar las llamadas anteriores.
-Con maven o gradle se deberá construir y generar automáticamente el proyecto
 
+- Documentación asociada a los ejercicios realizados. ¿Cómo se ha realizado?¿Que has usado y por qué?
+- Ejemplo petición $ curl -X POST /api/pedido
+- Ejemplo petición $ curl -X GET /api/pedido/{id}
+- Especificar la gestión de seguridad para realizar las llamadas anteriores.
+- Con maven o gradle se deberá construir y generar automáticamente el proyecto
+
+- - -
 ## Solución propuesta
-### Descripción de la arquitectura
+### Descripción de la arquitectura y resumen de ejercicio
 
 El proyecto se ha diseñado como dos proyectos separados, incluyendo:
-- Proyecto `ricoh-demo` donde se incluye el servidor de autenticación `ricoh-demo-auth-server` y dos resource server, uno para pedidos y otro para articulos (`ricoh-demo-articulo-server` y `ricoh-demo-pedido-server`).
+- Proyecto `ricoh-demo` donde se incluye el servidor de autenticación OAuth2 con JWT `ricoh-demo-auth-server` y dos resource server, uno para pedidos y otro para articulos (`ricoh-demo-articulo-server` y `ricoh-demo-pedido-server`).
 - Proyecto `ricoh-demo-model`, donde se incluye la capa de persistencia comun a los resource servers de articulo y pedidos
 
+NOTA: En adelante nos referiremos al proyecto `ricoh-demo-model` como MODEL, al proyecto padre `ricoh-demo` como PADRE, al submódulo `ricoh-demo-auth-server` como AUTH y a los submódulos `ricoh-demo-articulo-server` y `ricoh-demo-pedido-server` como ARTICULO y PEDIDO.
+
 ```
-|-  ricoh-demo-model (jar)
+ESTRUCTURA DEL PROYECTO
+
+|-  ricoh-demo-model (jar) -> Proyecto para acceso a datos común (MODEL)
 |
-|- ricoh-demo (pom)
+|- ricoh-demo (pom) -> Proyecto padre (PARENT)
    |
-   |- ricoh-demo-auth-server (jar)
-   |- ricoh-demo-articulo-server (jar)
-   |- ricoh-demo-pedido-server (jar)
+   |- ricoh-demo-auth-server (jar) -> Servidor de autenticacion OAuth2 con JWT (AUTH)
+   |- ricoh-demo-articulo-server (jar) -> Servidor de articulos (ARTICULO)
+   |- ricoh-demo-pedido-server (jar) -> Servidor de pedidos (PEDIDO)
 ```
+
+Todos los proyectos corren sobre SpringBoot 2, usando Spring Data (JPA) como capa de acceso a datos. Con el fin de mejorar la reusabilidad en el codigo y aumentar la encapsulación de los mismos, se ha diseñado un proyecto MODEL, compartido por los proyectos principales, que define las clases para el acceso a datos.
+
+Para la securización, se ha añadido un servidor de autenticación independiente OAuth2 con JWT definido en el submodulo AUTH, a fin de establecer la independencia entre la capa de seguridad y la API Rest indicada. Este token será necesario para realizar cualquier operación sobre la API.
+
+Como base de datos se elige MySQL acorde al enunciado del ejercicio. No obstante, para la realización de los test de integración, se ha utilizado una base de datos H2 no persistente, a fin de establecer una ejecución más realista de éstos. Dicha base de datos se autoalimenta a través de los scripts incluidos en `src/test/resources` de los proyectos ARTICULO y PEDIDO.
+
+Finalmente, se incluye una configuración DOCKER-COMPOSE para la creación de imágenes y contenedores de los proyectos AUTH, ARTICULO y PEDIDO. Esta construcción requiere de una serie de configuraciones que se explican en el punto correspondiente. 
 
 ### Compilado e instalación
 
-Mediante el plugin (Maven Wrapper) se ha configurado la posibilidad de ejecutar la instalación de ambos modulos desde el directorio del proyecto padre (ricoh-demo). Asimismo se crea una configuración de Maven Wrapper para ambos proyectos:
-`mvn -N io.takari:maven:0.7.7:wrapper`
+Mediante el plugin (Maven Wrapper) se ha configurado la posibilidad de ejecutar la instalación de ambos modulos desde el directorio del proyecto padre. Asimismo se crea una configuración de Maven Wrapper para ambos proyectos. Deberá usarse este plugin para la construcción automática y testeo del proyecto
 
-**Construcción y generación de ambos modulos**
-- `mvnw clean install`: clean install del proyecto multimodular a ejecutar desde la carpeta del proyecto padre. Compila de forma limpia los modulos del proyecto. Asimismo, ejecuta los test (integración, unitarios y de rendimiento). Para evitar la ejecución de todos los test incluir el parametro `-Dmaven.test.skip=true -DskipTests=true`
-- `mvnw verify`: goal para ejecución de testing. Se incluyen los test unitarios así como test de integración, configurado a través del plugin **surefire**
+#### Construcción y generación de proyectos
 
-**Construcción y generación de modulos por separado**
-No obstante puede ejecutar de forma independiente para cada proyecto,d dentro de cada directorio ya que cada uno tiene su maven wrapper:
-- `mvnw clean install`: clean install de cada proyecto. Incluye ejecución de proyectos. Para evitar la ejecución de test incluir el parametro `-Dmaven.test.skip=true`
-- `mvnw verify`: goal para ejecución de testing. Se incluyen los test unitarios así como test de integración, configurado a través del plugin **surefire**
+- _NOTA: Dada la dependencia del modulo `ricoh-demo-model` es necesario construir este proyecto el primero a fin de importarlo en los demás_
 
-**Ejecución**
-Para la ejecución de cada modulo por separado, se puede lanzar el goal `mvn spring-boot:run`
+- _NOTA2: El proyecto utiliza lombok para la simplificación del código. Es posible que tenga que instalarlo de forma previa en su IDE para el correcto funcionamiento de los proyectos. Para más info visite `https://projectlombok.org`_
 
-**Base de datos**
-TODO
+De forma previa a la construcción del proyecto, debe configurarse el datasource a utilizar, en caso de tratarse de una ejecución en local o una ejecución a través de DOCKER. En los archivos `application.yml` de los proyectos AUTH, ARTICULO y PEDIDO, se debe comentar o descomentar la linea `url` según la finalidad de la construcción:
+```
+...
+spring:
+  datasource:
+    url: jdbc:mysql://ricoh-mysql:3306/ricoh?useSSL=false  -> Configuración para uso en contenedores DOCKER
+    url: jdbc:mysql://localhost:3306/ricoh?useSSL=fals     -> Configuración para ejecución en local
+...
+```
+En caso de ejecución en local, deberá tenerse arrancada y configurada la base de datos MySQL local corriendo en el puerto 3306 con un usuario `root`:`root` con permisos sobre todos los elementos. Se incluye el script `docs/database_config_script.sql` para creación e inserción de datos de prueba, que deberá realizarse de forma previa.
 
-**Testing**
-Goals maven:
-- `mvn verify` - test integracion y unitarios
-- `mvn jmeter:jmeter` - test performance
+Para el compilado se incluye el goal `mvnw clean install`. 
+- Desde la carpeta de cada proyecto principal PARENT y MODEL, realiza un clean install del proyecto donde se ejecuta. 
+- Asimismo, ejecuta los test (integración, unitarios y de rendimiento). Para evitar la ejecución de todos los test incluir el parametro `-Dmaven.test.skip=true -DskipTests=true`. 
+
+Esto puede realizarse en cada directorio de cada modulo por separado. Como se a indicado, deberá haberse compilado y estar disponible en el repositorio el jar del proyecto MODEL.
+
+Para la ejecución, ejecutar los archivos `.jar` creados en los directorios de cada proyecto.
+
+#### API Rest y seguridad
+
+El proyecto realizado consiste en dos servicios API Rest para el acceso a información de Articulos y Pedidos. Asimismo, se incluye un servidor independiente de autenticación OAuth2 con token JWT. Los endpoint expuestos se pueden consultar en la documentación SWAGGER incluida en el proyecto: `http://localhost:PORT/swagger-ui.html`. 
+
+Se adjuntan a continuación las llamadas CURL a los distintos endpoints de los proyectos. Cabe indicar que se requiere disponer de un token de autenticación, accesible a través del servidor AUTH, con una duración establecida de 900 segundos (15 min).
+
+Para el testeo de la seguridad, se ha restringido el acceso de algunos metodos según los permisos de usuario:
+
+- _Usuario ADMIN_: Puede ejecutar todos los métodos
+- _Usuario USER_: Solo puede ejecutar los metodos `getArticulo`, `getArticulosById`, `getPedidos`, `getPedidoById`.
+
+Para la solicitud del token deberá usarse la autenticación Básica con datos de usuario `USER_CLIENT_APP` y contraseña `password`, indicando como método de obtención de token `password`. Los datos de los usuarios son:
+
+| USUARIO | PASSWORD |
+| ------- | -------- |
+| ADMIN   | password |
+| USER    | password |
+
+Se incluye un ejemplo para cada usuario en las llamadas CURL del punto posterior.
+
+**Llamadas curl**
+  - AUTH: Obtencion token:
+    - Token user ADMIN: `curl -X POST "http://localhost:{PORT}/oauth/token" -H "Authorization: Basic VVNFUl9DTElFTlRfQVBQOnBhc3N3b3Jk" -F "grant_type=password" -F "username=admin" -F "password=password"`
+    - Token user USER: `curl -X POST "http://localhost:{PORT}/oauth/token" -H "Authorization: Basic VVNFUl9DTElFTlRfQVBQOnBhc3N3b3Jk" -F "grant_type=password" -F "username=user" -F "password=password"`
+  - ARTICULO:
+    - getArticulos: `curl -X GET "http://localhost:{PORT}/api/articulo/" -H "accept: */*" -H "Authorization: Bearer {token}"`
+    - getArticulosById: `curl -X GET "http://localhost:{PORT}/api/articulo/1" -H "accept: */*" -H "Authorization: Bearer {token}"`
+  - PEDIDO:
+    - getPedidos: `curl -X GET "http://localhost:{PORT}/api/pedido/" -H "accept: */*" -H "Authorization: Bearer {token}"`
+    - getPedidoById: `curl -X GET "http://localhost:{PORT}/api/pedido/1" -H "accept: */*" -H "Authorization: Bearer {token}"`
+    - createPedido: `curl -X POST "http://localhost:{PORT}/api/pedido/" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"articulos\": [ 1 ], \"cliente\": \"CLIENTE\"}" -H "Authorization: Bearer {token}"`
+    - updatePedido: `curl -X PUT "http://localhost:{PORT}/api/pedido/" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"articulos\": [ 1, 2 ], \"cliente\": \"UPDATE\", \"id\": 1}" -H "Authorization: Bearer {token}"`
+    - deletePedidById: `curl -X DELETE "http://localhost:{PORT}/api/pedido/1" -H "accept: */*" -H "Authorization: Bearer {token}"`
+
+A fin de facilitar el testeo de los distintos endpoints, se incluye una colección de request para POSTMAN, incluida en `docs/jrg_ricoh.postman_collection.json`. Tenga en cuenta que para su ejecución deberá seleccionar el entorno de pruebas (Local o Docker) dado que los puertos de los distintos servicios cambian. Esto se ha realizado así para comprobar fehacientemente que las solicitudes se hacen sobre uno u otro entorno:
+
+| PUERTO SERVICIO | LOCALHOST | DOCKER |
+| --------------- | --------- | ------ |
+| ARTICULO        | 8080      | 8083   |
+| PEDIDO          | 8081      | 8084   |
+| ARTICULO        | 8082      | 8085   |
+
+Para la modificación de los puertos de escucha se debe modificar el parametro `port` de los distintos `application.yml` del proyecto. Tenga en cuenta que deberá ajustar los puertos en el archivo `docker-compose.yml` acorde a los nuevos puertos locales y docker:
+Por ejemplo, el servicio ARTICULO desplegado en entorno local escucha en el puerto 8080, mientras que cuando se despliega el contenedor DOCKER, escucha en el puerto 8083.
+
+```
+...
+ports:
+  - "{PUERTO DOCKER}:{PUERTO LOCAL}"
+...
+```
+
+Un ejemplo de testeo seria:
+- Obtener el token de autenticación mediante postman/curl para alguno de los usuarios a través de la llamada al servidor AUTH
+- Usando el token obtenido, realizar la llamada al servicio correspondiente.
+
+Por otro lado, tal y como se indica en el enunciado, los servicios de Pedidos son transaccionales.
+
+### Testing
+
+Se incluyen test unitarios, de integración y de rendimiento mediante el plugin Jmeter. Puede ejecutarlos realizando un **mvnw clean install** del proyecto.
+_NOTA: Los test se incluyen en los proyectos ARTICULO y PEDIDO según el ámbito y clases de cada uno de ellos_
+
+**Test unitarios**:
+
+_Paquete com.jrg.ricoh.demo.test.unit_
+
+Se ha utilizado JUnit y Mockito para la realización de los distintos test unitarios de controladores, servicios y otras clases principales. Se han mockeado las distintas clases accesorias con el fin implementar el aislamiento correspondiente de este tipo de tests. Pueden lanzarse a traves del IDE correspondiente o simplemente haciendo un _mvnw clean install_ del proyecto.
+
+**Test de integración**:
+
+_Paquete com.jrg.ricoh.demo.test.integrity.test_
+
+Para la realización de los test de integración se ha utilizado una base de datos volátil H2, autoalimentada al inicio de cada ronda de test, y reiniciada después de cada test que modifique los datos (metodos CREATE, UPDATE, DELETE) mediante la anotación `@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)`. Por otro lado y para evitar la necesidad de autenticación a través de token, se ha mockeado dicha autenticación mediante el uso de la @interface `WithMockOAuth2Authority`, que permite indicar el rol con el que se desea realizar el test, a fin de incluir el testeo de la seguridad establecida. 
+
+**Test de rendimiento**
+
+_Folder src/main/resources/performance/_
+
+Se incluyen los test de rendimiento diseñados mediante la herramienta JMeter. Se han probado los distintos endpoints de cada controlador según el servicio a testear. Los resultados son exportados en formato CSV a la carpeta _src/main/resources/performance/results_ de cada proyecto.
 
 **Docker**
-- Comandos varios:
-  - Ver contenedores: `docker ps -a`
-  - Arrancar contenedor: `docker container start <id>`
-  - Parar contenedor: `docker container stop <id>`
-  - Borrar contenedor: `docker rm <id>`
-  - Ver contenedores activos: `docker container ls`
 
-- Mysql:
-  - Hacer pull de la imagen de docker de mysql (en este caso la 5.6): `docker pull mysql`
-  - Correrla en local: `docker run --name ricoh-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ricoh -e MYSQL_USER=root -e MYSQL_PASSWORD=root -d mysql:5.6`. En este caso correrá la imagen de mysql como `rico-mysql` en un nuevo contenedor
+Se incluye una configuración `docker-compose.yml` para la construcción y despliegue de contenedores para los proyectos. Utiliza una base de datos mysql:5.6, que precarga la estructura de tablas y unos datos de ejemplo. Dicha base de datos es persistente.
+Para el testeo, utilizar los puertos configurados de Docker, indicados en el apartado **llamadas curl**. Se incluye el script sql que ejecuta la base de datos al inicio en el directorio `mysql-dump`.
 
-- Crear Dockerfiles:
-  - Auth server:
-    ```
-    FROM openjdk:8-jdk-alpine
-    ADD target/ricoh-demo-auth-server.jar ricoh-demo-auth-server.jar
-    EXPOSE 8081
-    ENTRYPOINT ["java","-jar","ricoh-demo-auth-server.jar"]
-    ```
-    - Resource server:
-    ```
-    FROM openjdk:8-jdk-alpine
-    ADD target/ricoh-demo-resource-server.jar ricoh-demo-resource-server.jar
-    EXPOSE 8080 
-    ENTRYPOINT ["java","-jar","ricoh-demo-resource-server.jar"]
-    ```
-  - Build de cada uno: 
-    - `docker build -t javierrodriguezgonzalez/ricoh-demo-resource-server .`
-    - `docker build -t javierrodriguezgonzalez/ricoh-demo-auth-server .`
+- - - 
+Autor: Javier Rodriguez Gonzalez
 
-  - Uso de docker compose: `docker-compose up` 
-  
-- swagger UI: http://localhost:8080/swagger-ui.html
+Agosto 2020

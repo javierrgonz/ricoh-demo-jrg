@@ -19,6 +19,11 @@ import com.jrg.ricoh.demo.dto.PedidoDto;
 import com.jrg.ricoh.demo.entity.Pedido;
 import com.jrg.ricoh.demo.service.PedidoService;
 
+/**
+ * The PedidoController
+ * @author Javier
+ *
+ */
 @RestController
 @RequestMapping("/api/pedido")
 public class PedidoController {
@@ -30,6 +35,11 @@ public class PedidoController {
 		this.pedidoService = pedidoService;
 	}
 
+	/**
+	 * Creates a pedido
+	 * @param pedidoDto (required) a dto with the info
+	 * @return <b>Http created code</b> if created
+	 */
 	@PostMapping("/")
 	@PreAuthorize("hasAnyAuthority('role_admin')")
 	public ResponseEntity<Object> createPedido(
@@ -40,6 +50,11 @@ public class PedidoController {
 		return ResponseEntity.created(location).build();
 	}
 
+	/**
+	 * Updates a pedido 
+	 * @param pedidoDto (required) a dto with the info
+	 * @return <b>Http noContent code</b> if updated <b>Http not found</b> otherwise
+	 */
 	@PutMapping("/")
 	@PreAuthorize("hasAnyAuthority('role_admin')")
 	public ResponseEntity<Object> updatePedido(@RequestBody PedidoDto pedidoDto) {
@@ -51,6 +66,11 @@ public class PedidoController {
 		return ResponseEntity.noContent().build();
 	}
 
+	/**
+	 * Delete pedido by id
+	 * @param id the id to delete
+	 * @return <b>Http accepted code</b> if created <b>Http badRequest code</b> otherwise
+	 */
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasAnyAuthority('role_admin')")
 	public ResponseEntity<Object> deletePedidoById(@PathVariable int id) {
@@ -59,6 +79,11 @@ public class PedidoController {
 				: ResponseEntity.badRequest().build();
 	}
 
+	/**
+	 * Get pedido by id
+	 * @param id (required) the id
+	 * @return <b>Http ok code and the pedido</b> if found <b>Http not found code</b> otherwise
+	 */
 	@GetMapping(path = "/{id}")
 	@PreAuthorize("hasAnyAuthority('role_admin','role_user')")
 	public ResponseEntity<Pedido> getPedidoById(@PathVariable(name = "id", required = true) final int id) {
@@ -71,6 +96,10 @@ public class PedidoController {
 		return ResponseEntity.ok().body(pedido);
 	}
 
+	/**
+	 * Get all pedidos
+	 * @return <b>Http ok code and a list of pedidos</b> if created <b>Http not found code</b> otherwise
+	 */
 	@GetMapping("/")
 	@PreAuthorize("hasAnyAuthority('role_admin','role_user')")
 	public ResponseEntity<List<Pedido>> getPedidos() {

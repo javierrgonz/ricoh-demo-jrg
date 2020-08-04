@@ -15,6 +15,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.jrg.ricoh.demo.entity.CustomPrincipal;
 
+/**
+ * The WebMvcConfiguration
+ * @author Javier
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class WebMvcConfiguration implements WebMvcConfigurer {
