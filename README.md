@@ -3,6 +3,15 @@
 Demo para proceso de selección de Ricoh (Agosto 2020)
 
 - - - 
+
+## INICIO RAPIDO
+
+- Compile el proyecto model en la carpeta `/ricoh-demo-model/` mediante `mvnw clean install`
+- Compile los servicios en la carpeta `/ricoh-demo` mediante `mvnw clean install`
+- Construya los contenedores de los servicios y la base de datos `/ricoh-demo` con `docker-compose up`
+- Obtenga su token de autenticación mediante la orden `curl -X POST "http://localhost:8085/oauth/token" -H "Authorization: Basic VVNFUl9DTElFTlRfQVBQOnBhc3N3b3Jk" -F "grant_type=password" -F "username=admin" -F "password=password"`
+- Obtenga un listado de pedidos mediante la orden `curl -X GET "http://localhost:8084/api/pedido/" -H "accept: */*" -H "Authorization: Bearer {token}"` sustituyendo `{token}` por el obtenido en el paso anterior
+
 ## Resumen
 
 Creación de una API REST. Con un servicio que listará pedidos, pudiendo acceder al detalle de un catalogo de cualquier articulo de un pedido
@@ -70,6 +79,8 @@ Como base de datos se elige MySQL acorde al enunciado del ejercicio. No obstante
 
 Finalmente, se incluye una configuración DOCKER-COMPOSE para la creación de imágenes y contenedores de los proyectos AUTH, ARTICULO y PEDIDO. Esta construcción requiere de una serie de configuraciones que se explican en el punto correspondiente. 
 
+_NOTA: acorde a lo indicado en el enunciado del ejercicio, al obtener los pedidos s puede navegar hasta el catalogo de un articulo del pedido. Para ello se ha establecido que el fetch de la relacion ManyToMany sea de tipo EAGER mediante la anotacion `@ManyToMany(fetch=FetchType.EAGER)`_
+
 ### Compilado e instalación
 
 Mediante el plugin (Maven Wrapper) se ha configurado la posibilidad de ejecutar la instalación de ambos modulos desde el directorio del proyecto padre. Asimismo se crea una configuración de Maven Wrapper para ambos proyectos. Deberá usarse este plugin para la construcción automática y testeo del proyecto
@@ -132,6 +143,7 @@ Se incluye un ejemplo para cada usuario en las llamadas CURL del punto posterior
     - createPedido: `curl -X POST "http://localhost:{PORT}/api/pedido/" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"articulos\": [ 1 ], \"cliente\": \"CLIENTE\"}" -H "Authorization: Bearer {token}"`
     - updatePedido: `curl -X PUT "http://localhost:{PORT}/api/pedido/" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"articulos\": [ 1, 2 ], \"cliente\": \"UPDATE\", \"id\": 1}" -H "Authorization: Bearer {token}"`
     - deletePedidById: `curl -X DELETE "http://localhost:{PORT}/api/pedido/1" -H "accept: */*" -H "Authorization: Bearer {token}"`
+
 
 A fin de facilitar el testeo de los distintos endpoints, se incluye una colección de request para POSTMAN, incluida en `docs/jrg_ricoh.postman_collection.json`. Tenga en cuenta que para su ejecución deberá seleccionar el entorno de pruebas (Local o Docker) dado que los puertos de los distintos servicios cambian. Esto se ha realizado así para comprobar fehacientemente que las solicitudes se hacen sobre uno u otro entorno:
 
