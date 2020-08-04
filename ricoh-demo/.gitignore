@@ -1,6 +1,6 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
-/src/main/resources/performance/result/*
+**/src/main/resources/performance/results/*
 
 ### STS ###
 .apt_generated

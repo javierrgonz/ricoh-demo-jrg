@@ -45,7 +45,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<finalName>ricoh-demo-pedido-server</finalName>
+					<finalName>ricoh-demo-articulo-server</finalName>
 				</configuration>
 			</plugin>
 			<plugin>
