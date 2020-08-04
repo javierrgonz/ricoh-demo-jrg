@@ -60,7 +60,7 @@ Mediante el plugin (Maven Wrapper) se ha configurado la posibilidad de ejecutar 
 `mvn -N io.takari:maven:0.7.7:wrapper`
 
 **Construcción y generación de ambos modulos**
-- `mvnw clean install`: clean install del proyecto multimodular a ejecutar desde la carpeta del proyecto padre. Compila de forma limpia los modulos del proyecto. Asimismo, ejecuta los test (integración, unitarios y de rendimiento). Para evitar la ejecución de todos los test incluir el parametro `-Dmaven.test.skip=true -DskipTest=true`
+- `mvnw clean install`: clean install del proyecto multimodular a ejecutar desde la carpeta del proyecto padre. Compila de forma limpia los modulos del proyecto. Asimismo, ejecuta los test (integración, unitarios y de rendimiento). Para evitar la ejecución de todos los test incluir el parametro `-Dmaven.test.skip=true -DskipTests=true`
 - `mvnw verify`: goal para ejecución de testing. Se incluyen los test unitarios así como test de integración, configurado a través del plugin **surefire**
 
 **Construcción y generación de modulos por separado**
